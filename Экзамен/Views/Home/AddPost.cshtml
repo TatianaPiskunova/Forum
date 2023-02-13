@@ -1,0 +1,37 @@
+﻿@model Экзамен.Models.Post
+
+<h4>Добавить пост</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-controller="Home" asp-action="AddPost">
+            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Id" value="@ViewBag.Id" type="hidden" />
+            </div>
+            <div class="form-group">
+                <input asp-for="UserName" value="@User.Identity.Name" type="hidden" />
+            </div>
+            <div class="form-group">
+                <input value="@ViewBag.TopicId" asp-for="TopicId" type="hidden" />
+            </div>
+            <div class="form-group">
+                <input asp-for="DateTime" value="@ViewBag.DateTime" type="hidden" />
+            </div>
+     
+            <div class="form-group" style="width:600px; height:200px">
+                <label asp-for="TextPost" class="control-label"></label>
+                <textarea asp-for="TextPost" class="form-control"></textarea>
+                <span asp-validation-for="TextPost" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <input type="submit" value="Отправить" class="btn btn-primary" style="width:200px" />
+            </div>
+        </form>
+        <br />
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary" style="width:200px">Отмена</a>
+    </div>
+</div>
+
+

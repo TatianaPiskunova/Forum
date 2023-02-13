@@ -1,0 +1,27 @@
+﻿@page
+@model Экзамен.Pages.EditModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<h2>
+    Редактирование
+</h2>
+<form method="post" asp-page="/Edit">
+    <div asp-validation-summary="All"></div>
+    <input asp-for="Id" type="hidden" />
+    <div>
+        <label>Фамилия</label>
+        <div>
+            <input asp-for="Lastname" />
+            <span asp-validation-for="Lastname"></span>
+        </div>
+    </div>
+    <div>
+        <label>Логин</label>
+        <div>
+            <input asp-for="UserName" />
+            <span asp-validation-for="UserName"></span>
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="Сохранить" />
+    </div>
+</form>

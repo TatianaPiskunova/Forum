@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TopicPost>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+<p class="h2 mb-3">Добро пожаловать на форум!!!!</p>
+<div class="container-fluid" style="border:dashed 3px green;  overflow-y: auto; height:600px">
+  
+    @foreach (var show in Model)
+    {
+        <div class="row  border border-primary m-3" style="overflow-y: auto; height:200px">
+            <div class="col">
+                <h4 style="color:darkblue">@show.TitleTopic</h4>
+             
+                
+                    @foreach (var a in show.Posts)
+                    {
+                    <div class="row ps-5 border-bottom" style="color:goldenrod; ">
+                        <div class="row text-end" style="font-size:smaller">
+                            @a.DateTime
+                   
+                        </div>
+                        <div class="row">
+                            <div class="row text-end" style="font-size:smaller; color:cornflowerblue">
+                                <p> Пользователь: @a.UserName</p>
+                            
+                            </div>
+                             <div class="row">
+
+                                <p style="font-size:large" >@a.TextPost</p>
+                             </div>
+                        </div>
+                      </div>
+                    }
+                @if (User.Identity.IsAuthenticated)
+                {
+
+             
+                    <a class="m-2" href="~/Home/AddPost/@show.Id">Добавить пост</a>
+
+                }
+              </div>
+
+
+          </div>
+
+      
+    }
+    @if (User.Identity.IsAuthenticated)
+    {
+       
+        <a class="m-2" asp-controller="Home" asp-action="AddTopic">Добавить тему</a>
+        
+      
+
+       
+    }
+
+</div>

@@ -1,0 +1,47 @@
+﻿@page
+@model Экзамен.Pages.UsersModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Пользователи";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Пользователи</h2>
+<div>
+
+    @foreach (var item in Model.Users)
+    {
+        <div class="row">
+            <div class="col-md-2">
+                @item.UserName
+            </div>
+            <div class="col-md-3">
+                @item.Lastname
+            </div>
+            <div class="col-md-4">
+                @item.Email
+            </div>
+            <div class="col-md-2">
+                <form method="post">
+
+                    <input type="submit"
+                           asp-page-handler="Delete"
+                           asp-route-id="@item.Id"
+                           value="Удалить"
+                           class="btn btn-info btn-md">
+                </form>
+            </div>
+            <div class="col-md-1">
+                <a asp-area="" asp-page="/Edit" 
+                   asp-route-id="@item.Id" 
+                   class="btn btn-info btn-md"
+                   data-ajax="true"
+                   data-ajax-update="#reg"
+                   data-ajax-mode="replace"
+                   data-ajax-method="get">
+                    Изменить
+                </a>
+            </div>
+            <br />
+        </div>
+    }
+</div>

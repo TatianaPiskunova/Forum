@@ -1,0 +1,30 @@
+﻿@model Экзамен.Models.Topic
+
+<h4>Добавить тему</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-controller="Home" asp-action="AddTopic">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Id" type="hidden" />
+            </div>
+            <div class="form-group">
+                <input asp-for="UserName" value="@User.Identity.Name" type="hidden" />
+            </div>
+            <div class="form-group" style="width:max-content; height:200px">
+                <label asp-for="TitleTopic" class="control-label"></label>
+                <input type="textarea" asp-for="TitleTopic" class="form-control" />
+                <span asp-validation-for="TitleTopic" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <input type="submit" value="Отправить" class="btn btn-primary" style="width:200px" />
+            </div>
+        </form>
+        <br />
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary" style="width:200px">Отмена</a>
+    </div>
+</div>
+
+
